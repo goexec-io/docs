@@ -1,0 +1,20 @@
+# build do Astro
+dist/
+.astro/
+
+# dependencias
+node_modules/
+
+# ambiente
+.env
+.env.production
+.env.local
+
+# sistema operacional
+.DS_Store
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+*.swp

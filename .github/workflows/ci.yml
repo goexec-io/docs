@@ -1,0 +1,41 @@
+name: CI
+
+# Este repositorio e publico, entao minutos de Actions sao gratuitos. Aproveite:
+# tudo que da para verificar sozinho deve rodar aqui, e nao na cabeca do revisor.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      # PRIMEIRO, e sozinho. Se vazou conteudo interno, nao interessa se o site
+      # compila -- nada mais roda e o PR nao entra.
+      - name: Gate de vazamento
+        run: npm run check:vazamento
+
+      # O build carrega o starlight-links-validator: link interno ou ancora
+      # morta quebram aqui, que e onde tem conserto barato.
+      - name: Build
+        run: npx astro build
+
+      - name: Markdown
+        run: npm run check:markdown

@@ -1,0 +1,17 @@
+{
+  // Estas paginas sao texto em pt-BR, nao README de biblioteca. As regras
+  // desligadas abaixo brigam com prosa, ou com a convencao que o resto do
+  // projeto ja segue -- nenhuma delas pega defeito.
+  "config": {
+    "line-length": false,        // o texto e quebrado por sentido, nao por coluna
+    "no-inline-html": false,     // MDX usa componentes do Starlight
+    "first-line-heading": false, // o titulo vem do frontmatter, nao de um h1
+    "no-duplicate-heading": { "siblings_only": true },
+
+    // MD060 quer `| --- | --- |`. O resto da documentacao do projeto escreve
+    // `|---|---|`, e trocar so aqui criaria duas convencoes para a mesma coisa.
+    "table-column-style": false
+  },
+  "globs": ["src/content/docs/**/*.{md,mdx}"],
+  "ignores": ["node_modules"]
+}

@@ -1,0 +1,25 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# HTML sempre revalidado: uma correcao de texto nao pode ficar presa no
+# navegador de quem ja visitou. O resto muda de nome junto com o build do Astro,
+# entao pode ter cache longo.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=604800
+
+/*.png
+  Cache-Control: public, max-age=604800
+
+/contracts/*
+  Cache-Control: public, max-age=604800
+  Access-Control-Allow-Origin: *

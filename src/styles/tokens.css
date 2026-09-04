@@ -1,0 +1,115 @@
+/* =============================================================================
+   GoExec.io — a paleta da documentacao
+   =============================================================================
+   ORIGEM. Estes valores nao nasceram aqui. A fonte da verdade e o arquivo
+   `src/styles/tokens.css` do painel, no repositorio do produto, que declara ser
+   "the ONLY place in the application where a color is invented". A landing
+   mantem uma segunda copia, em hex. Esta e a terceira, e ela existe porque vive
+   em outro repositorio e nao tem como importar a primeira.
+
+   Por isso a paleta aqui e PEQUENA de proposito: a marca, os quatro status e os
+   neutros. Quanto menos valor houver para envelhecer, menos divergencia.
+   Precisou de uma cor nova? Ela tem de nascer no painel primeiro.
+
+   A REGRA QUE NAO PODE QUEBRAR: verde significa "online" e nada mais. Um link,
+   um botao de destaque ou um cabecalho nunca sao verdes. Repare que nao existe
+   `--sl-hue-green` definido abaixo: os avisos do Starlight usam azul, violeta,
+   ambar e rosa, e nenhum deles e verde. Nao introduza.
+
+   COMO O STARLIGHT TEMATIZA (e a pegadinha): o tema ESCURO mora em `:root` e o
+   CLARO em `:root[data-theme='light']` -- o inverso do que quase todo mundo
+   escreve. Definir uma cor so num dos dois blocos da um site que funciona em um
+   tema e quebra no outro.
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   TEMA ESCURO — o padrao do Starlight, e por isso mora no :root.
+   -------------------------------------------------------------------------- */
+:root,
+::backdrop {
+  /* Neutros de tinta violeta: o cinza "puxa" para a marca em vez de brigar. */
+  --sl-color-white: hsl(0, 0%, 100%);
+  --sl-color-gray-1: hsl(250, 30%, 94%);
+  --sl-color-gray-2: hsl(248, 20%, 79%); /* o texto do corpo */
+  --sl-color-gray-3: hsl(247, 14%, 58%);
+  --sl-color-gray-4: hsl(248, 13%, 38%);
+  --sl-color-gray-5: hsl(249, 16%, 25%);
+  --sl-color-gray-6: hsl(250, 20%, 16%); /* barra lateral e topo */
+  --sl-color-black: hsl(254, 32%, 8%); /* o fundo. E o --ink da landing. */
+
+  /*
+   * No escuro a marca sobe de 600 para 500. Nao e capricho: e exatamente o que
+   * o painel faz, e pelo mesmo motivo -- o violeta 600 nao tem contraste
+   * suficiente contra um fundo de 8% de luminosidade.
+   */
+  --sl-color-accent-low: #2f0f57; /* brand-950 */
+  --sl-color-accent: #9469f7; /* brand-500 */
+  --sl-color-accent-high: #c3b4fd; /* brand-300 */
+
+  /*
+   * Os matizes dos avisos (:::note, :::tip, :::caution, :::danger). Trocando so
+   * o matiz, o Starlight recalcula as tres variacoes de cada um mantendo o
+   * contraste que ele ja ajustou por tema.
+   */
+  --sl-hue-blue: 198; /* sky   #3ABFF8 — informacao */
+  --sl-hue-purple: 262; /* brand #7C3AED — dica */
+  --sl-hue-orange: 43; /* amber #FABE23 — atencao */
+  --sl-hue-red: 351; /* rose  #FB6F84 — alerta */
+
+  /*
+   * Tipografia: as mesmas tres familias da landing. Sora nos titulos vem mais
+   * abaixo, porque o Starlight nao tem variavel propria para fonte de titulo.
+   */
+  --sl-font: 'IBM Plex Sans', ui-sans-serif, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --sl-font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* -----------------------------------------------------------------------------
+   TEMA CLARO — a rampa de cinzas inverte: `white` vira o texto mais escuro e
+   `black` vira o fundo da pagina. Nao e erro de nome, e a convencao do
+   Starlight: os nomes sao posicoes na rampa, nao cores.
+   -------------------------------------------------------------------------- */
+:root[data-theme='light'],
+[data-theme='light'] ::backdrop {
+  --sl-color-white: hsl(254, 32%, 10%); /* o texto mais escuro */
+  --sl-color-gray-1: hsl(250, 20%, 16%);
+  --sl-color-gray-2: hsl(249, 16%, 25%);
+  --sl-color-gray-3: hsl(248, 13%, 38%);
+  --sl-color-gray-4: hsl(247, 12%, 56%);
+  --sl-color-gray-5: hsl(248, 20%, 80%);
+  --sl-color-gray-6: hsl(249, 25%, 93%);
+  --sl-color-gray-7: hsl(250, 30%, 97%);
+  --sl-color-black: hsl(0, 0%, 100%); /* o fundo da pagina */
+
+  /* No claro a marca e a marca: #7C3AED, o mesmo violeta da landing. */
+  --sl-color-accent-low: #ded7fe; /* brand-200 */
+  --sl-color-accent: #7c3aed; /* brand-600 — o violeta da marca, exato */
+  --sl-color-accent-high: #511ea4; /* brand-800 */
+}
+
+/* -----------------------------------------------------------------------------
+   Titulos em Sora.
+   -------------------------------------------------------------------------- */
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4,
+.content-panel h1,
+.site-title,
+.hero h1,
+.hero .tagline {
+  font-family: 'Sora', 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+
+/*
+ * Tabela larga rola dentro da propria caixa. Sem isso a pagina inteira ganha
+ * rolagem horizontal no celular -- e boa parte destas paginas e tabela.
+ */
+.sl-markdown-content table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}

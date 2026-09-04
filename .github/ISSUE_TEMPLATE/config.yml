@@ -1,0 +1,13 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Suporte do produto
+    url: mailto:support@goexec.io
+    about: >-
+      Problema com a sua conta, com a sua placa ou com uma cobrança. Este
+      repositório é só a documentação — para conta e aparelho, fale com o
+      suporte.
+  - name: Falha de segurança
+    url: mailto:support@goexec.io
+    about: >-
+      Não abra issue pública. Escreva para o suporte com o assunto "segurança" e
+      responderemos por lá.

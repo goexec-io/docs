@@ -1,0 +1,78 @@
+---
+title: Documentação do GoExec.io
+description: >-
+  Qualquer entrada, qualquer saída. Como montar, gravar e automatizar um
+  aparelho GoExec.io — sem escrever código.
+template: splash
+hero:
+  tagline: >-
+    Qualquer entrada ligada a qualquer saída. A placa lê o mundo, o servidor
+    decide, e alguém fica sabendo — sem uma linha de código.
+  image:
+    file: ../../assets/mascote-hero.webp
+    alt: O mascote do GoExec.io, um técnico de capacete
+  actions:
+    - text: Começar do zero
+      link: /comecar/o-que-e/
+      icon: right-arrow
+    - text: Não funcionou
+      link: /problemas/gravador-nao-acha-a-porta/
+      icon: error
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Por onde começar
+
+<CardGrid>
+  <LinkCard
+    title="O que é o GoExec.io"
+    href="/comecar/o-que-e/"
+    description="A ideia em três minutos, e o que o produto faz hoje."
+  />
+  <LinkCard
+    title="Antes de começar"
+    href="/comecar/antes-de-comecar/"
+    description="O que você precisa ter na mão antes de ligar a primeira placa."
+  />
+  <LinkCard
+    title="Qual placa escolher"
+    href="/hardware/qual-placa-escolher/"
+    description="A diferença entre elas que realmente decide a compra."
+  />
+  <LinkCard
+    title="O botão"
+    href="/hardware/o-botao/"
+    description="Quatro tempos, quatro efeitos. A página mais consultada."
+  />
+</CardGrid>
+
+## O que torna isto diferente
+
+<CardGrid>
+  <Card title="O aparelho não sabe nada" icon="setting">
+    Ele descobre no boot. O servidor entrega o mapa de pinos, e a placa aplica.
+    Trocar um sensor de pino é uma edição na tela — não uma regravação por USB.
+  </Card>
+  <Card title="86 ms, medido" icon="rocket">
+    Do clique no botão até a confirmação de que o relé mexeu. A conexão fica
+    aberta o tempo todo, então não há espera de ciclo.
+  </Card>
+  <Card title="Queda em 1 segundo" icon="warning">
+    Se o cabo for arrancado, o próprio servidor de mensagens avisa. Ninguém
+    precisa perguntar à placa se ela ainda está viva.
+  </Card>
+  <Card title="Um aviso, não vinte" icon="approve-check">
+    Sensor oscilando vinte vezes gera uma notificação. O tempo de espera e o
+    intervalo mínimo são configuráveis por regra.
+  </Card>
+</CardGrid>
+
+## Esta documentação é aberta
+
+Achou erro, faltou explicação, a instrução não bateu com a tela? Toda página tem
+**"Editar esta página"** no rodapé, que abre o arquivo já no editor do GitHub.
+
+O repositório é [`goexec-io/docs`](https://github.com/goexec-io/docs). O texto
+está sob CC BY 4.0.

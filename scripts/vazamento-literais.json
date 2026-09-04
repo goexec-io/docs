@@ -1,0 +1,18 @@
+{
+  "_leiame": "Hashes dos literais que nao podem ser publicados. O texto original NAO esta aqui, e esse e o ponto: uma lista legivel de proibicoes e um inventario do que esconder. Para acrescentar: node scripts/vazamento-hash.mjs \"<literal>\" e cole o hash abaixo.",
+  "algoritmo": "sha256(SAL + normalizar(literal)), ver scripts/vazamento-comum.mjs",
+  "hashes": [
+    "0b1693fbc7b1c96f48081b57b2721c359f9c53e9394583676d08f8e18f7363a8",
+    "1fe6cfdb32f50a9f767dff7fe5faef3f4dbe3032066b3fdf5082f89fce9fd838",
+    "5a79e7106efc9b4ebd87f321da84367449562d02c45d677f83a138cfaf798de4",
+    "62ce42b320184952daa04d0aa45da6ce66dadac4cfb26e7f453f6061fdb07ae9",
+    "717ffc9b286db472c40d3832c43abb01edb97637efa3e888116aaacee7b3f64b",
+    "7990c0f6d05cdac16d709f53fa3e8c295018cb36e3005a287b5cc044a22cff83",
+    "7a0e636c261f9f44c62fbb41fc99a8d877cd559b66f03ad0a2172bbc818e6436",
+    "8b0bbc2b64b8caeb059fad5208cbc20118f7a39d0b91781c1a532084c6d41f2c",
+    "c8673ebaa4f8e572f224048cf59866e38ab1f1d3b310669e9754bcda288ed9fb",
+    "d7ceadd8fddbdbb3fed6b3a1f2a3c0c67eba54c6c707dc34ef36946ac36393e7",
+    "f6bec5ed20202a7c4991defab63e414e0f305ce683d0c7336c092def973c692f",
+    "fd07b343a7b42e511841b2bd0cd6fe83a1f4b1206498b63324ee60f367bcda78"
+  ]
+}

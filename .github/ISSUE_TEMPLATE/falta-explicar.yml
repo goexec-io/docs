@@ -1,0 +1,29 @@
+name: Falta explicar
+description: Você procurou uma resposta aqui e não achou
+labels: [documentacao, lacuna]
+body:
+  - type: textarea
+    id: procurava
+    attributes:
+      label: O que você estava tentando fazer
+      description: >-
+        A tarefa, não a pergunta. "Ligar um sensor de temperatura num D1 mini"
+        diz mais do que "como usar DS18B20".
+    validations:
+      required: true
+
+  - type: textarea
+    id: procurou
+    attributes:
+      label: Onde você procurou
+      description: Que páginas você abriu, e o que buscou na caixa de busca.
+    validations:
+      required: true
+
+  - type: textarea
+    id: resolveu
+    attributes:
+      label: Como você resolveu, se resolveu
+      description: >-
+        Se você descobriu sozinho, conte como — isso costuma ser 80% da página
+        que falta, e você já escreveu.

@@ -1,0 +1,43 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 GoExec.io
+
+Esta licenca cobre o CONTEUDO deste repositorio: o texto das paginas em
+src/content/docs/, as imagens e os diagramas.
+
+O codigo do site (configuracao do Astro, scripts, folhas de estilo) esta sob a
+licenca MIT — veja LICENSE-CODE.
+
+O produto GoExec.io em si (backend, painel, aplicativo e firmware) NAO esta
+coberto por nenhuma destas licencas: e software proprietario e vive em outro
+repositorio, fechado.
+
+-------------------------------------------------------------------------------
+
+Voce tem o direito de:
+
+  Compartilhar — copiar e redistribuir o material em qualquer suporte ou
+  formato.
+
+  Adaptar — remixar, transformar e criar a partir do material, para qualquer
+  fim, inclusive comercial.
+
+O licenciante nao pode revogar estes direitos desde que voce respeite os termos
+da licenca.
+
+De acordo com os seguintes termos:
+
+  Atribuicao — Voce deve dar o credito apropriado, prover um link para a
+  licenca e indicar se mudancas foram feitas. Voce pode faze-lo de qualquer
+  forma razoavel, mas nao de maneira que sugira que o licenciante apoia voce ou
+  o seu uso.
+
+  Sem restricoes adicionais — Voce nao pode aplicar termos juridicos ou medidas
+  de carater tecnologico que restrinjam legalmente outros de fazerem algo que a
+  licenca permita.
+
+O texto legal completo esta em:
+https://creativecommons.org/licenses/by/4.0/legalcode.pt
+
+Um resumo em linguagem simples esta em:
+https://creativecommons.org/licenses/by/4.0/deed.pt-br

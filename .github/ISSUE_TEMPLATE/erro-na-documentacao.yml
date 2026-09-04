@@ -1,0 +1,37 @@
+name: Erro na documentação
+description: A página diz uma coisa e a realidade é outra
+labels: [documentacao, erro]
+body:
+  - type: input
+    id: pagina
+    attributes:
+      label: Qual página
+      description: Cole o endereço, ou o caminho do arquivo.
+      placeholder: https://docs.goexec.io/hardware/o-botao/
+    validations:
+      required: true
+
+  - type: textarea
+    id: diz
+    attributes:
+      label: O que a página diz
+      description: Copie o trecho, mesmo que seja uma linha.
+    validations:
+      required: true
+
+  - type: textarea
+    id: aconteceu
+    attributes:
+      label: O que aconteceu de verdade
+      description: >-
+        O que você fez, e o que apareceu na tela ou na placa. Se houve mensagem
+        de erro, cole ela inteira.
+    validations:
+      required: true
+
+  - type: input
+    id: contexto
+    attributes:
+      label: Placa e sistema
+      description: Ajuda a reproduzir. Opcional.
+      placeholder: WeMos D1 mini, Windows 11
