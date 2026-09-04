@@ -71,8 +71,16 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Guia do usuário',
+          items: [{ autogenerate: { directory: 'guia' } }],
+        },
+        {
           label: 'Hardware',
           items: [{ autogenerate: { directory: 'hardware' } }],
+        },
+        {
+          label: 'Integrações',
+          items: [{ autogenerate: { directory: 'integracoes' } }],
         },
         {
           label: 'Solução de problemas',
