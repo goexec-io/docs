@@ -1,0 +1,21 @@
+/**
+ * O que a Cloudflare publica.
+ *
+ * Este site e estatico: nao ha codigo de Worker, so os arquivos que o Astro
+ * gera. Por isso existe `assets` e nao existe `main` -- o `main` apontaria
+ * para um script que atende as requisicoes, e aqui nao ha nenhum.
+ *
+ * O `_headers` que controla o cache mora em `public/` e o Astro o copia para
+ * `dist/`. Os Workers leem esse arquivo nativamente, entao ele nao precisa de
+ * configuracao aqui.
+ */
+{
+  "name": "goexec-docs",
+  "compatibility_date": "2026-09-04",
+  "assets": {
+    "directory": "./dist"
+  },
+  // Cada branch que nao e a de producao ganha um endereco proprio. E o que faz
+  // um Pull Request poder ser revisado na pagina pronta, e nao no diff.
+  "preview_urls": true
+}

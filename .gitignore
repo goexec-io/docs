@@ -18,3 +18,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# estado local do wrangler
+.wrangler/
