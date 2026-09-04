@@ -23,8 +23,18 @@ export default defineConfig({
       title: 'GoExec.io',
       description:
         'Documentacao do GoExec.io: montar, gravar e automatizar aparelhos que leem entradas e acionam saidas, sem programar.',
+      /*
+       * Duas logos, e nao uma. O Starlight serve a logo como <img>, entao o
+       * `currentColor` de dentro do SVG NAO herda a cor da pagina -- ele
+       * resolve contra o `color` declarado no proprio arquivo. Com um arquivo
+       * so, a palavra "GoExec" ficava branca tambem no tema claro, sobre fundo
+       * branco.
+       *
+       * As duas variantes sao geradas do mesmo tracado, mudando so duas cores.
+       */
       logo: {
-        src: './src/assets/logo.svg',
+        light: './src/assets/logo-light.svg',
+        dark: './src/assets/logo-dark.svg',
         alt: 'GoExec.io',
         replacesTitle: true,
       },
