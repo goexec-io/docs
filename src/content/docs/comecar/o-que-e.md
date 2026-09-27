@@ -31,7 +31,8 @@ saída.**
 **Do outro, o que ela faz:**
 
 - aciona um relé — em pulso, em trava, ou por um tempo determinado;
-- manda WhatsApp, Telegram, e-mail ou um aviso no aplicativo do celular;
+- manda WhatsApp, Telegram, e-mail ou um aviso no
+  [aplicativo do celular](/aplicativo/o-aplicativo/);
 - tira uma foto com uma [ESP32-CAM](/hardware/esp32-cam/) e a manda junto com o
   aviso;
 - chama um endereço HTTP (é assim que Slack e Discord entram), com uma
@@ -77,8 +78,9 @@ declara fora depois de uma vez e meia esse tempo sem notícia.
 Vale dizer com todas as letras, porque a diferença aparece rápido:
 
 - **atualização de firmware pela internet** — hoje a gravação é por USB;
-- **o aplicativo nas lojas** — o aviso no celular existe, mas o aplicativo ainda
-  não está publicado na App Store nem no Google Play;
+- **o aplicativo nas lojas** — o [aplicativo](/aplicativo/o-aplicativo/) para
+  iOS e Android existe, mas por enquanto só para quem entra no programa de beta
+  testers; ele ainda não está publicado na App Store nem no Google Play;
 - **notificação no navegador** (web push);
 - **aprender um controle remoto de RF ou de ar-condicionado** — os shields
   existem no desenho, não no produto.

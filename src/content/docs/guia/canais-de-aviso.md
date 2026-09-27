@@ -19,7 +19,7 @@ escolhem para qual deles mandar, na ação **Enviar notificação**.
 | WhatsApp | Um número ou um grupo | Depois que a pessoa do destino envia o código |
 | Telegram | Um contato ou um grupo | Depois que a pessoa do destino envia o código |
 | HTTP | Um endereço que recebe um JSON | Depois de um **Enviar teste** entregue |
-| App no celular | O aplicativo do GoExec.io num telefone | Criado **pelo próprio aplicativo** |
+| App no celular | O [aplicativo](/aplicativo/o-aplicativo/) do GoExec.io num telefone | Criado **pelo próprio aplicativo** |
 
 A etiqueta no cartão do canal diz em que pé ele está: **Verificado**, **Sem
 teste**, **Aguardando confirmação** ou **Inativo**. Na ação da automação, um
