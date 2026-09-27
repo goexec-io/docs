@@ -124,6 +124,7 @@ configuração do site, e vale combinar por onde começar.
 src/content/docs/
 ├── comecar/      do zero ao primeiro acionamento
 ├── guia/         regras, ações, canais de aviso, fotos
+├── aplicativo/   o aplicativo do celular (beta)
 ├── conta/        entrar, duas etapas, sessões, papéis
 ├── hardware/     placas, pinos, gravador, portal, botão
 ├── integracoes/  chamar e ser chamado por outro sistema

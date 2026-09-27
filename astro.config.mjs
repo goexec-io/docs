@@ -85,6 +85,11 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'guia' } }],
         },
         {
+          label: 'Aplicativo',
+          badge: { text: 'Beta', variant: 'note' },
+          items: [{ autogenerate: { directory: 'aplicativo' } }],
+        },
+        {
           label: 'Conta e segurança',
           items: [{ autogenerate: { directory: 'conta' } }],
         },

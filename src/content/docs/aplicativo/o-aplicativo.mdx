@@ -1,0 +1,117 @@
+---
+title: O aplicativo do GoExec.io
+description: >-
+  As suas placas no bolso: ligar uma saída, ver o que aconteceu, criar uma regra
+  e receber o aviso no celular. Em beta para iOS e Android.
+sidebar:
+  order: 1
+  label: Visão geral
+  badge:
+    text: Beta
+    variant: note
+---
+
+import { Card, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+O painel web é onde você monta a instalação. O aplicativo é onde você **vive
+com ela**: o portão que você abre de longe, o aviso que chega quando a
+temperatura passa do limite, a olhada rápida para saber se está tudo no ar.
+
+Ele conversa com a mesma conta e a mesma organização do painel. Nada precisa
+ser configurado duas vezes: a placa que você cadastrou no computador já está
+no celular.
+
+:::caution[Em fase de beta]
+O aplicativo está disponível para **iOS e Android**, por enquanto só para
+quem participa do programa de beta testers. Ele ainda não está publicado na
+App Store nem no Google Play.
+:::
+
+## Quero ser beta tester
+
+<Steps>
+
+1. Escreva para
+   [support@goexec.io](mailto:support@goexec.io?subject=Quero%20ser%20beta%20tester%20do%20aplicativo)
+   pedindo para entrar no beta do aplicativo.
+
+2. Diga no e-mail:
+   - se o seu celular é **iPhone** ou **Android**;
+   - o **e-mail da sua conta** no GoExec.io.
+
+3. A resposta traz o convite e o passo a passo para instalar.
+
+</Steps>
+
+Como beta tester, você usa o aplicativo antes de todo mundo — e o que você
+estranhar, ou o que faltar, tem um caminho curto até quem constrói. Responda
+ao mesmo e-mail do convite para contar.
+
+## O que ele faz
+
+<CardGrid>
+  <Card title="Ligar e desligar na hora" icon="rocket">
+    As saídas aparecem direto no cartão da placa. Um toque, e o aplicativo
+    mostra **Enviando…** até a placa confirmar que o relé mexeu.
+  </Card>
+  <Card title="O aviso no celular" icon="warning">
+    O canal **App no celular** faz toda regra poder avisar o telefone — e, se
+    você quiser, a queda de uma placa chega sem regra nenhuma.
+  </Card>
+  <Card title="Ao vivo" icon="random">
+    Eventos e visão geral se atualizam sozinhos. Se o sinal oscila, o
+    aplicativo diz, e passa a buscar de 10 em 10 segundos.
+  </Card>
+  <Card title="Automações completas" icon="pencil">
+    Criar, editar, ligar, desligar e excluir uma regra, num passo a passo de
+    quatro etapas pensado para a tela pequena.
+  </Card>
+  <Card title="Cadastrar pela etiqueta" icon="magnifier">
+    Aponte a câmera para o QR da etiqueta e a placa entra na sua conta — sem
+    digitar código.
+  </Card>
+  <Card title="Gráfico das medições" icon="list-format">
+    Temperatura, umidade ou qualquer medição, na última hora ou nos últimos 7
+    dias, com média, mínimo ou máximo.
+  </Card>
+</CardGrid>
+
+## As cinco abas
+
+| Aba | O que tem |
+|---|---|
+| **Dispositivos** | Suas placas, com o estado e as saídas à mão. É onde o aplicativo abre |
+| **Visão geral** | Quantas placas estão no ar, quantas regras estão ativas, e o que **Precisa de atenção** |
+| **Automações** | As regras, cada uma escrita como uma frase: "Quando …, então …" |
+| **Eventos** | Tudo o que aconteceu, do mais novo para o mais antigo, com filtros |
+| **Mais** | Canais de aviso, aparelhos transferidos, configurações e sair |
+
+## Por onde seguir
+
+<CardGrid>
+  <LinkCard
+    title="Entrar e configurar"
+    href="/aplicativo/entrar-e-configurar/"
+    description="Login, verificação em duas etapas, idioma, tema e sessões."
+  />
+  <LinkCard
+    title="Dispositivos no celular"
+    href="/aplicativo/dispositivos/"
+    description="Acionar saídas, ler medições e cadastrar uma placa pela etiqueta."
+  />
+  <LinkCard
+    title="Automações no celular"
+    href="/aplicativo/automacoes/"
+    description="O passo a passo de quatro etapas, e o que só se ajusta no painel."
+  />
+  <LinkCard
+    title="Avisos e eventos"
+    href="/aplicativo/avisos-e-eventos/"
+    description="O canal App no celular, a aba Eventos e o que acontece quando o sinal cai."
+  />
+  <LinkCard
+    title="O que fica no painel web"
+    href="/aplicativo/o-que-fica-no-painel/"
+    description="O que o aplicativo não faz — de propósito ou ainda."
+  />
+</CardGrid>
