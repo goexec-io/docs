@@ -123,7 +123,11 @@ configuração do site, e vale combinar por onde começar.
 ```
 src/content/docs/
 ├── comecar/      do zero ao primeiro acionamento
-├── hardware/     placas, pinos, shields, botão
+├── guia/         regras, ações, canais de aviso, fotos
+├── conta/        entrar, duas etapas, sessões, papéis
+├── hardware/     placas, pinos, gravador, portal, botão
+├── integracoes/  chamar e ser chamado por outro sistema
+├── api/          a API pública, para quem integra
 ├── problemas/    "não funcionou, e agora"
 └── contribuir/   este assunto
 ```
