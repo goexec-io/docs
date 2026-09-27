@@ -21,22 +21,34 @@ A diferença é grande, e dá para medir:
 | | Conexão aberta | Perguntando a cada 10 s |
 |---|---|---|
 | Clicar em "abrir portão" → o relé mexer | **86 ms** | até 10 segundos |
-| Descobrir que o aparelho caiu | **1 segundo** | esperar o silêncio — na prática, 3 minutos |
+| Descobrir que o aparelho caiu | **de 1 a 30 segundos** | esperar o silêncio — na prática, 3 minutos |
 | Configuração nova chegar | sozinha, na hora | só na próxima pergunta |
 
 E há um custo que não aparece no relógio: perguntar a cada 10 segundos obriga a
 placa a refazer uma negociação de segurança completa a cada ciclo, no chip mais
 fraco da instalação.
 
-### Como a queda é detectada em 1 segundo
+### Como a queda é detectada
 
 Ao conectar, a placa deixa uma mensagem combinada com o servidor de mensagens:
 *"se eu sumir, publique isto"*. Não é a placa que avisa que caiu — é o
-intermediário, que percebe a conexão morrer.
+intermediário, que publica o aviso quando percebe a conexão morrer.
 
-Por isso cabo arrancado vira "offline" na tela em segundos, sem ninguém
-perguntar nada a ninguém. E por isso o aparelho desligado na tomada aparece como
-offline, e não como "sem resposta há um tempo".
+O quanto isso leva depende de **como** ela morreu:
+
+| Como caiu | "Offline" na tela em |
+|---|---|
+| A placa fechou a conexão (reinício, troca de rede) | cerca de 1 segundo |
+| Faltou energia, ou o Wi-Fi sumiu de repente | cerca de 30 segundos |
+| O servidor de mensagens caiu junto | até cerca de 3,5 minutos |
+
+A diferença entre as duas primeiras linhas é física. Uma placa que fecha a
+conexão avisa na hora. Uma placa sem energia não avisa nada — o intermediário
+só percebe pelo silêncio. A placa dá sinal de vida a cada 20 segundos, e depois
+de uma vez e meia esse tempo sem notícia a conexão é dada como morta.
+
+Em qualquer caso, o aparelho desligado na tomada aparece como offline, e não
+como "sem resposta há um tempo" — sem ninguém perguntar nada a ninguém.
 
 ## Um comando não se perde, e não executa duas vezes
 
@@ -49,8 +61,13 @@ Todo comando carrega três coisas:
 | Um prazo de validade | Depois dele, o comando não vale mais |
 
 E o servidor só considera o comando entregue **quando a placa confirma**. Sem
-confirmação, ele tenta de novo; se a placa continuar sem responder, ele para e
-registra a falha em vez de fingir sucesso.
+confirmação, ele reenvia enquanto o prazo vale — **30 segundos** para um comando
+dado no painel, **20** para um de automação. Vencido o prazo, ele para e registra
+o comando como vencido, em vez de fingir sucesso.
+
+A memória do que já foi executado sobrevive a um reinício da placa: um comando
+repetido depois de um reset não aciona de novo. Veja [Quando a placa reinicia ou
+falta energia](/hardware/quando-falta-energia/).
 
 :::caution[O prazo de validade não é um detalhe]
 Um comando de abrir portão que ficou duas horas parado na fila **não pode**
@@ -77,6 +94,9 @@ chegar num aparelho novo": ela não precisa chegar, ela já está lá esperando.
 | Identidade da placa | Senha própria, aleatória, diferente em cada unidade, guardada só como hash |
 | Isolamento entre aparelhos | Cada placa só consegue falar no canal dela — nem lê nem escreve no de outra |
 | Sua sessão no painel | Credencial curta na memória do navegador, renovada por um cookie que o JavaScript não enxerga |
+| Seu login | [Verificação em duas etapas](/conta/verificacao-em-duas-etapas/) opcional, e um botão para [encerrar todas as outras sessões](/conta/sessoes-e-senha/) |
+| Destinos de aviso | WhatsApp e Telegram só recebem depois que o destino prova, com um código, que quer receber |
+| Integrações | [Chaves de API](/api/chaves-de-api/) mostradas uma vez só, guardadas só como hash, limitadas ao papel de quem emitiu e revogáveis na hora; chamadas de saída [assinadas](/integracoes/assinatura-do-webhook/) |
 | Isolamento entre contas | Filtro por conta na aplicação **e** no banco de dados, em duas camadas independentes |
 
 Duas raízes de certificado vão embarcadas na placa desde a primeira versão — a
