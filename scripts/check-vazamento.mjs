@@ -60,8 +60,17 @@ const ALVOS = [
    1. LISTAS DE PERMISSAO — o que pode aparecer. Tudo mais da mesma forma cai.
    ------------------------------------------------------------------------- */
 
-/** Os unicos enderecos do dominio que sao publicos. */
-const HOSTS_PUBLICOS = new Set(['goexec.io', 'www.goexec.io', 'docs.goexec.io', 'app.goexec.io']);
+/**
+ * Os unicos enderecos do dominio que sao publicos. `api.` entra porque e o
+ * endereco que o proprio contrato publico da API divulga, servido sem chave.
+ */
+const HOSTS_PUBLICOS = new Set([
+  'goexec.io',
+  'www.goexec.io',
+  'docs.goexec.io',
+  'app.goexec.io',
+  'api.goexec.io',
+]);
 
 /** O unico e-mail do dominio que se pode divulgar. */
 const EMAILS_PUBLICOS = new Set(['support@goexec.io']);

@@ -85,12 +85,20 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'guia' } }],
         },
         {
+          label: 'Conta e segurança',
+          items: [{ autogenerate: { directory: 'conta' } }],
+        },
+        {
           label: 'Hardware',
           items: [{ autogenerate: { directory: 'hardware' } }],
         },
         {
           label: 'Integrações',
           items: [{ autogenerate: { directory: 'integracoes' } }],
+        },
+        {
+          label: 'API pública',
+          items: [{ autogenerate: { directory: 'api' } }],
         },
         {
           label: 'Solução de problemas',
