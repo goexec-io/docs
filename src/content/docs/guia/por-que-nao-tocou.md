@@ -1,18 +1,20 @@
 ---
 title: Por que não tocou
 description: >-
-  Quando uma regra não roda, o motivo fica registrado. Como ler a tela de
-  Eventos e o que cada situação significa.
+  Quando uma regra não roda, o motivo fica registrado. Onde olhar, o que cada
+  situação significa, e o que conferir quando nada foi registrado.
 sidebar:
-  order: 10
+  order: 17
 ---
 
 Esta é a pergunta mais comum, e ela tem resposta — não precisa adivinhar.
 
-**Abra a tela de Eventos.** Uma regra que foi acordada mas **não** executou
-aparece lá, com o motivo.
+**Abra o histórico da regra.** Na lista de automações, clique na contagem de
+execuções. Uma regra que foi acordada mas **não** executou aparece lá como
+**Pulou**, com o motivo. A lista completa de motivos está em [Histórico de uma
+regra](/guia/historico-de-uma-regra/); os mais comuns estão aqui.
 
-## Os motivos, e o que fazer
+## Os motivos mais comuns, e o que fazer
 
 ### O sinal não permaneceu
 
@@ -26,13 +28,13 @@ oscilando por problema elétrico. Confira o [resistor](/guia/contato-na-nf/).
 
 A regra rodou há pouco. É o comportamento pedido.
 
-### Fora da janela de horário, ou fora dos dias
+### Fora da faixa de horário, ou fora dos dias
 
 Confira dois pontos: o fuso configurado na automação, e se houve **queda de
 conexão**. O horário é julgado pelo instante em que o servidor ouviu — veja a
 [armadilha da janela](/guia/filtro-intervalo-e-janela/).
 
-### Teto por hora atingido
+### Limite por hora atingido
 
 A regra bateu o máximo de execuções da hora.
 
@@ -63,11 +65,19 @@ numérica. Quase sempre é *"a temperatura já voltou"*, e está certo.
 Se persistir, o limiar da placa e o número da automação divergiram — confira os
 dois em [Limiar e histerese](/guia/limiar-e-histerese/).
 
-## Se nem apareceu na tela de Eventos
+### A placa voltou antes do prazo
+
+Numa regra de [dispositivo sem
+comunicar](/guia/dispositivo-sem-comunicar/), a placa reconectou antes de
+completar o tempo pedido. É exatamente o que o prazo existe para tolerar.
+
+## Se nem apareceu no histórico
 
 Aí a regra nem foi acordada. Confira, nesta ordem:
 
-1. **A automação está ativa?**
+1. **A automação está ativa?** Uma integração pela [API
+   pública](/api/visao-geral/) também pode ligar e desligar regras — se ela
+   desligou sozinha, pergunte quem integra.
 2. **O aparelho está online?** Uma placa offline não reporta nada.
 3. **O gatilho é o certo?** Um gatilho "ao acionar" não dispara quando o sensor
    desaciona.
@@ -75,9 +85,26 @@ Aí a regra nem foi acordada. Confira, nesta ordem:
    canais.
 5. **O sensor está acionando mesmo?** Abra a tela do aparelho e olhe o canal
    enquanto alguém aciona.
+6. **É um agendamento?** Veja se a lista mostra **Próxima execução**, ou **Nunca
+   dispara**. Veja [Agendamento](/guia/agendamento/).
+7. **É um webhook?** Uma chamada recusada não chega a acordar a regra. Veja
+   [Webhook de entrada](/integracoes/webhook-de-entrada/).
 
-## Se a saída não mexeu, mas a regra rodou
+:::note[Um acontecimento muito atrasado é descartado]
+Se, por uma falha do lado do servidor, um acontecimento só chega para ser
+avaliado **mais de uma hora** depois de ter ocorrido, ele é descartado em vez
+de executado. É de propósito: uma borda de terça não abre um portão na sexta.
+:::
 
-A regra e a entrega são coisas separadas. Se a tela de Eventos mostra a execução,
-o problema é do outro lado: veja [Comando não chegou no
-aparelho](/problemas/comando-nao-chegou/).
+## Se a regra rodou, mas nada aconteceu
+
+A regra e a entrega são coisas separadas. Se o histórico mostra **Disparou**, o
+problema é do outro lado:
+
+- **A saída não mexeu?** Veja [Comando não chegou no
+  aparelho](/problemas/comando-nao-chegou/).
+- **O aviso não chegou?** Veja [O aviso não chegou](/problemas/aviso-nao-chegou/)
+  — inclusive a lista de alertas que não saíram, e como reenviar.
+- **Mostra Falhou?** Uma ação deu erro, e a linha diz em qual ação a regra
+  parou. Se a ação seguinte precisava rodar mesmo assim, marque **Continuar se
+  esta ação falhar** na que falhou.
