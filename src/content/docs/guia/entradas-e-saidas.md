@@ -22,7 +22,7 @@ Cada canal descreve **um** pino:
 | Campo | O que faz |
 |---|---|
 | Número do canal | De 1 até o limite da sua placa |
-| Identificador | Nome curto, tipo `sensor_porta`, usado nos textos de mensagem |
+| Identificador | Nome curto, tipo `sensor_porta` |
 | Nome | O que aparece na tela |
 | Direção | Entrada ou saída |
 | Pino | O pino físico — **conferido contra o modelo da sua placa** |
@@ -52,6 +52,23 @@ fazer".
 
 A placa confirma o que aplicou — e, se recusou algum pino, diz qual e por quê.
 Isso aparece na tela do aparelho.
+
+### Quando a placa volta com a configuração padrão
+
+Se uma configuração fizer a placa reiniciar de forma anormal três vezes
+seguidas — um relé mal ligado que derruba a alimentação, por exemplo —, ela
+sobe com a configuração padrão do modelo e a tela do aparelho mostra **Aparelho
+em modo de segurança**.
+
+Nesse estado, a configuração **não é reenviada sozinha**: confira a instalação
+e use **Confirmar e reenviar a configuração**. Se o problema continuar, a placa
+volta ao modo de segurança em até três reinícios. Veja [Modo de
+segurança](/hardware/quando-falta-energia/#modo-de-segurança).
+
+:::caution[Em validação]
+O modo de segurança já está no produto, mas ainda passa pela validação final
+em bancada.
+:::
 
 ## Uma entrada, uma saída, ou as duas
 
