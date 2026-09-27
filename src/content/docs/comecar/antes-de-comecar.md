@@ -11,7 +11,7 @@ Cinco minutos aqui economizam uma tarde depois.
 
 ## O que você precisa ter
 
-**Uma placa compatível.** São quatro modelos, e a escolha muda o que você pode
+**Uma placa compatível.** São cinco modelos, e a escolha muda o que você pode
 fazer depois — veja [Qual placa escolher](/hardware/qual-placa-escolher/).
 
 **Um cabo USB que transmita dados.** Este é o item que mais atrasa gente, e é o
@@ -29,6 +29,23 @@ opção para separar as faixas em dois nomes; se não tiver, dá para desligar a
 
 **Um computador com Windows, ou com Linux.** O gravador tem janela no Windows e
 linha de comando no Linux.
+
+### Se a sua placa é a ESP32-CAM
+
+A placa com câmera pede três coisas a mais:
+
+:::caution[Em validação]
+O suporte à ESP32-CAM é recente e ainda está sendo validado em placa real.
+:::
+
+- **Um jeito de ligá-la ao USB.** Ela não tem porta USB própria. Use a base
+  **ESP32-CAM-MB**, que encaixa por baixo, ou um adaptador USB-serial com o pino
+  IO0 ligado ao GND durante a gravação.
+- **Uma fonte de 5 V e 2 A.** Wi-Fi e câmera juntos puxam mais corrente do que
+  uma porta USB fraca entrega, e a placa reinicia no meio da foto.
+- **O cartão microSD fora** da placa na hora de gravar.
+
+Os detalhes estão em [ESP32-CAM](/hardware/esp32-cam/).
 
 ## As três armadilhas mais comuns
 
@@ -70,6 +87,11 @@ Além do acima:
 - **Ligue a placa antes de entregar.** Uma placa que nunca se conectou não pode
   ser reivindicada por ninguém — o registro dela acontece no primeiro contato
   com o servidor.
+- **Rede corporativa ou de hotel não impede a ativação.** Redes que bloqueiam a
+  sincronização de hora costumavam deixar uma placa nova presa; hoje o servidor
+  resolve a primeira ativação sem depender do relógio. A **transferência** de
+  uma placa para outra conta ainda precisa da hora certa, e espera numa rede
+  dessas.
 
 ## Próximo passo
 

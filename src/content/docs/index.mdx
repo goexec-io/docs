@@ -44,7 +44,7 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
   <LinkCard
     title="O botão"
     href="/hardware/o-botao/"
-    description="Quatro tempos, quatro efeitos. A página mais consultada."
+    description="Segurar 3 segundos abre o portal. O que mais ele faz — e o que não faz."
   />
 </CardGrid>
 
@@ -59,14 +59,40 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
     Do clique no botão até a confirmação de que o relé mexeu. A conexão fica
     aberta o tempo todo, então não há espera de ciclo.
   </Card>
-  <Card title="Queda em 1 segundo" icon="warning">
-    Se o cabo for arrancado, o próprio servidor de mensagens avisa. Ninguém
+  <Card title="Queda percebida sozinha" icon="warning">
+    O próprio servidor de mensagens avisa quando a placa some: em cerca de 1
+    segundo se ela se desconecta, em cerca de 30 se falta energia. Ninguém
     precisa perguntar à placa se ela ainda está viva.
   </Card>
   <Card title="Um aviso, não vinte" icon="approve-check">
     Sensor oscilando vinte vezes gera uma notificação. O tempo de espera e o
     intervalo mínimo são configuráveis por regra.
   </Card>
+</CardGrid>
+
+## Novidades
+
+<CardGrid>
+  <LinkCard
+    title="Fotos com a ESP32-CAM"
+    href="/guia/fotos-da-camera/"
+    description="Uma regra tira a foto e ela chega junto com o aviso, no WhatsApp, no Telegram ou no e-mail."
+  />
+  <LinkCard
+    title="API pública"
+    href="/api/visao-geral/"
+    description="Leia o estado das placas e acione saídas a partir de um sistema seu, com uma chave que você controla."
+  />
+  <LinkCard
+    title="Canais de aviso"
+    href="/guia/canais-de-aviso/"
+    description="WhatsApp e Telegram confirmados por código: o alerta não cai no número errado."
+  />
+  <LinkCard
+    title="Conferir a assinatura do webhook"
+    href="/integracoes/assinatura-do-webhook/"
+    description="Como o seu sistema prova que a chamada saiu mesmo do GoExec.io."
+  />
 </CardGrid>
 
 ## Esta documentação é aberta

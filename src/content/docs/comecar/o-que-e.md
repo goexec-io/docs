@@ -24,17 +24,25 @@ saída.**
 - presença ou movimento (sensor PIR);
 - temperatura passando de um limite, com o limite avaliado **na própria placa**;
 - confirmação de que uma saída ligou de verdade;
+- um aparelho que ficou sem comunicar por mais tempo do que você tolera;
 - uma chamada HTTP que outro sistema faz;
 - horário e agenda.
 
 **Do outro, o que ela faz:**
 
 - aciona um relé — em pulso, em trava, ou por um tempo determinado;
-- manda WhatsApp, Telegram ou e-mail;
-- chama um endereço HTTP (é assim que Slack e Discord entram).
+- manda WhatsApp, Telegram, e-mail ou um aviso no aplicativo do celular;
+- tira uma foto com uma [ESP32-CAM](/hardware/esp32-cam/) e a manda junto com o
+  aviso;
+- chama um endereço HTTP (é assim que Slack e Discord entram), com uma
+  assinatura que o destino pode conferir.
 
 Uma regra pode ter várias condições, e você escolhe se elas são alternativas
 ("ou também quando") ou obrigatórias ("somente se").
+
+**E de fora para dentro:** um sistema seu pode ler o estado das placas, acionar
+uma saída e consultar o histórico pela [API pública](/api/visao-geral/), com uma
+chave de acesso que você emite e revoga no painel.
 
 ## A ideia que sustenta tudo
 
@@ -55,16 +63,23 @@ falando o protocolo de verdade sobre uma conexão segura:
 | | Hoje | Como era antes |
 |---|---|---|
 | Comando → aparelho → confirmação | **86 ms** | até 10 s |
-| Detecção de queda de conexão | **1,0 s** | palpite de 3 minutos |
+| Detecção de queda — placa que se desconecta | **1,0 s** | palpite de 3 minutos |
+| Detecção de queda — falta de energia | **cerca de 30 s** | palpite de 3 minutos |
 | Configuração chegar num aparelho novo | **0 ms** — já está lá | uma tentativa no boot; se falhasse, aparelho inerte |
 | Sensor oscilando 20 vezes | **1 notificação** | 20 notificações |
+
+A exceção é a linha da falta de energia: ela vem do desenho da conexão, não de
+um cronômetro. A placa dá sinal de vida a cada 20 segundos, e o servidor a
+declara fora depois de uma vez e meia esse tempo sem notícia.
 
 ## O que ainda não existe
 
 Vale dizer com todas as letras, porque a diferença aparece rápido:
 
 - **atualização de firmware pela internet** — hoje a gravação é por USB;
-- **notificação push no celular**;
+- **o aplicativo nas lojas** — o aviso no celular existe, mas o aplicativo ainda
+  não está publicado na App Store nem no Google Play;
+- **notificação no navegador** (web push);
 - **aprender um controle remoto de RF ou de ar-condicionado** — os shields
   existem no desenho, não no produto.
 
