@@ -1,7 +1,7 @@
 ---
 title: Placas compatíveis e pinos seguros
 description: >-
-  As quatro placas suportadas, quantos canais cada uma tem, quais pinos você
+  As cinco placas suportadas, quantos canais cada uma tem, quais pinos você
   pode usar e quais o sistema recusa — com o motivo.
 sidebar:
   order: 1
@@ -12,18 +12,30 @@ import placas from '../../../assets/placas-bancada.webp';
 
 <Image src={placas} alt="As placas suportadas lado a lado, sobre a bancada" />
 
-## As quatro placas
+## As cinco placas
 
-| Placa | Chip | Canais | Pinos que você pode usar |
-|---|---|---|---|
-| WeMos D1 mini | ESP8266 | **5** | 4, 5, 12, 13, 14 |
-| WeMos LOLIN C3 mini | ESP32-C3 | **7** | 0, 1, 3, 4, 5, 6, 10 |
-| ESP32-C3 Super Mini | ESP32-C3 | **8** | 0, 1, 3, 4, 5, 6, 7, 10 |
-| DevKit ESP32-WROOM-32 / 32E | ESP32 | **10** | 4, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 32, 33 — e, só como entrada, 34, 35, 36, 39 |
+| Placa | Chip | Pinos | Canais | Pinos que você pode usar |
+|---|---|---|---|---|
+| WeMos D1 mini | ESP8266 | 5 | **5** | 4, 5, 12, 13, 14 |
+| WeMos LOLIN C3 mini | ESP32-C3 | 7 | **8** | 0, 1, 3, 4, 5, 6, 10 |
+| ESP32-C3 Super Mini | ESP32-C3 | 8 | **9** | 0, 1, 3, 4, 5, 6, 7, 10 |
+| DevKit ESP32-WROOM-32 / 32E | ESP32 | 19 | **10** | 4, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 32, 33 — e, só como entrada, 34, 35, 36, 39 |
+| [ESP32-CAM (AI-Thinker)](/hardware/esp32-cam/) | ESP32 | 2 | **2** | 13, 14 |
 
 A D1 mini e a C3 mini têm o **mesmo formato físico**: a mesma caixa e o mesmo
 shield de relés servem para as duas. O DevKit WROOM é maior e não encaixa nesse
 shield.
+
+## Pinos e canais são dois números
+
+"Pinos" é quantos pinos da placa você pode ligar a alguma coisa. "Canais" é
+quantas entradas e saídas o aparelho pode ter no painel. Só na D1 mini e na CAM
+os dois coincidem:
+
+- **nas duas C3, há um canal a mais que pinos.** O canal que sobra é para a
+  leitura de um sensor num shield, que não ocupa pino nenhum;
+- **na WROOM, há menos canais que pinos.** A placa tem 19 pinos seguros, mas a
+  firmware aceita no máximo 10 canais — você escolhe quais 10.
 
 ## As duas C3 são o mesmo chip em placas diferentes
 
@@ -40,26 +52,33 @@ conector.
 E os dois sintomas são silenciosos: o LED de status não acende, e um pino bom
 fica recusado. Nada aparece como erro.
 
-Nada que o gravador leia pelo USB distingue as duas placas. Por isso esta é a
-única em que ele **pergunta** qual é o modelo — na janela, o campo "Modelo".
-Se você escolher errado, escolha de novo e regrave.
+Nada que o gravador leia pelo USB distingue as duas placas. Por isso ele
+**pergunta** qual é o modelo — na janela, o campo "Modelo". Se você escolher
+errado, escolha de novo e regrave.
+
+O mesmo vale entre a DevKit WROOM e a ESP32-CAM, que pelo USB também são
+idênticas: em qualquer placa ESP32, diga ao gravador qual é.
 :::
 
 ## Os pinos que não são configuráveis
 
 Cada placa reserva dois pinos para si:
 
-| Função | D1 mini | C3 mini | C3 Super Mini | WROOM-32 |
-|---|---|---|---|---|
-| LED de status | 16 | 7 | 8 | 2 |
-| Botão de configuração | 0 | 9 | 9 | 0 (o botão BOOT) |
+| Função | D1 mini | C3 mini | C3 Super Mini | WROOM-32 | ESP32-CAM |
+|---|---|---|---|---|---|
+| LED de status | 16 | 7 | 8 | 2 | 33 (o LED vermelho) |
+| Botão de configuração | 0 | 9 | 9 | 0 (o botão BOOT) | 0 (o botão IO0 da base) |
 
 Na WROOM, o botão de configuração é o **BOOT que já vem soldado**, e o LED de
 status é o LED azul embutido. Não é preciso soldar nada para ter os dois.
 
+Na ESP32-CAM, além desses dois, **quase todos os outros pinos são reservados**:
+câmera, memória extra, flash branco e os pinos de partida (2, 12 e 15). Sobram só
+o 13 e o 14 — veja [ESP32-CAM, a placa com câmera](/hardware/esp32-cam/).
+
 ## Três pinos da WROOM merecem atenção
 
-A WROOM é a placa com mais entradas e saídas livres das quatro — 19 pinos
+A WROOM é a placa com mais entradas e saídas livres das cinco — 19 pinos
 sobrevivem a um reset com relé ligado. Mas três grupos são armadilha:
 
 **O pino 12 é proibido, e o sistema recusa.** Se ele estiver em nível alto no
@@ -86,10 +105,17 @@ Quando você escolhe um pino que a placa não aceita, a tela recusa e diz o
 motivo. As causas, em ordem de frequência:
 
 1. O pino não está na lista da sua placa (a primeira tabela desta página).
-2. O pino é reservado ao LED de status ou ao botão.
-3. É o pino 12 numa WROOM — o que impede o boot.
+2. O pino é reservado ao LED de status ou ao botão — ou, na ESP32-CAM, a
+   qualquer coisa que não seja o 13 e o 14.
+3. É o pino 12 numa WROOM ou numa ESP32-CAM — o que impede o boot.
 4. É um pino só de entrada (34 a 39) e você tentou configurá-lo como saída.
 5. O pino já está em uso por outro canal.
+
+Um caso à parte: o **pino 7 recusado numa C3 Super Mini**. Se a placa foi
+registrada como LOLIN C3 mini — as duas são o mesmo chip, e o servidor não tem
+como distinguir sozinho —, o painel aplica a lista da C3 mini, onde o 7 é o LED.
+Fale com o suporte em [support@goexec.io](mailto:support@goexec.io) para
+corrigir o modelo do aparelho, e depois confira os canais dele.
 
 ## Próximo passo
 

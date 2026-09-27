@@ -4,7 +4,7 @@ description: >-
   Como conectar a placa à rede, quando o portal abre sozinho, e as duas
   informações que só aparecem nessa tela.
 sidebar:
-  order: 4
+  order: 6
 ---
 
 Quando a placa não está na rede, ela vira um ponto de acesso Wi-Fi e serve uma
@@ -13,7 +13,8 @@ página de configuração. É o portal.
 ## Conectar a placa à rede
 
 1. Na lista de redes do celular, a placa aparece como **`GoExec-XXXX`**.
-2. Conecte usando o **PIN da etiqueta**.
+2. Conecte usando a **senha da etiqueta**. Numa placa que você mesmo gravou, a
+   senha aparece no gravador, em **Acesso a placa → Senha da rede**.
 3. A página abre sozinha. Se não abrir, acesse **`http://192.168.4.1`** no
    navegador.
 4. Escolha a sua rede e digite a senha. Rede oculta: use o campo de digitação em
@@ -31,9 +32,9 @@ para poder entrar na rede que você acabou de configurar.
 | Situação | O que acontece |
 |---|---|
 | Placa nova, sem Wi-Fi salvo | Abre sozinho **e não expira** |
-| Você quer trocar de roteador | Segure o botão por **3 segundos** |
+| Você quer trocar de roteador | Segure o botão por **3 segundos** (na ESP32-CAM, o IO0) |
 | A senha do Wi-Fi mudou | Abre sozinho depois de **3 recusas seguidas** do roteador |
-| A placa foi transferida para você | Abre sozinho no próximo boot, já com o código novo na tela |
+| Uma [transferência](/hardware/transferir-a-placa/) foi aceita | Abre sozinho no próximo boot, já com o código novo na tela |
 
 **Sinal fraco não abre o portal.** Só senha recusada. A distinção importa: sem
 ela, o roteador de um condomínio reiniciando faria dezenas de placas virarem
@@ -66,6 +67,13 @@ placa, num campo selecionável e com um botão **Copiar**.
 É a resposta para dois casos comuns: a etiqueta que descolou, e a unidade que
 foi gravada na bancada e nunca teve etiqueta.
 
+## Transferir para outra conta
+
+Numa placa que já pertence a uma conta, o portal tem também a seção
+**Transferir para outra conta**. É o caminho para passar a placa adiante sem
+apagar nada — o passo a passo está em [Passar a placa para outra
+conta](/hardware/transferir-a-placa/).
+
 ## Quanto tempo o portal fica aberto
 
 | Como abriu | Fecha quando |
@@ -94,7 +102,8 @@ portal por 10 minutos, reinicia, tenta de novo.
   tela.
 - **`GoExec-XXXX` não aparece em lugar nenhum** → a placa pode não estar
   ativada. Placa gravada sem código de ativação não sobe ponto de acesso, e isso
-  é deliberado.
+  é deliberado. Não precisa regravar: no gravador, use **Ativar placa** — veja
+  [Regravar sem perder a ativação](/hardware/regravar-sem-perder-a-ativacao/).
 
 ## Próximo passo
 

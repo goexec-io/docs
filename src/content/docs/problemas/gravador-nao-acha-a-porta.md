@@ -33,14 +33,15 @@ precisa de driver:
 
 | Chip | Onde aparece |
 |---|---|
-| **CH340** | Nas placas mais baratas — a maioria das clonadas |
+| **CH340** | Nas placas mais baratas — a maioria das clonadas — e na base ESP32-CAM-MB |
 | **CP2102** | Nas placas originais e nas mais caras |
 
 No Windows, sem o driver, a placa aparece no Gerenciador de Dispositivos como um
 item com ponto de exclamação, ou não aparece.
 
 Como saber qual você tem: olhe o chip retangular menor na placa, ao lado do
-conector USB. O nome está escrito nele.
+conector USB. O nome está escrito nele. Na ESP32-CAM, o conversor fica na base
+de gravação, não na placa da câmera.
 
 Instale o driver do fabricante do chip, desconecte, reconecte, e abra o gravador
 de novo.
@@ -61,12 +62,36 @@ O gravador lida com isso: fecha, espera reaparecer e reabre. Mas se você
 interrompeu o processo no meio, pode ter sobrado uma porta fantasma. Desconecte
 a placa, espere cinco segundos, reconecte.
 
+Isso só acontece nas C3. As outras placas — inclusive a ESP32-CAM — usam um
+chip conversor, e a porta não muda de nome.
+
 ## 5. É um módulo sem auto-reset
 
 Módulos ESP-WROOM-02 avulsos — o módulo puro, não uma placa de desenvolvimento —
 não têm o circuito que reseta a placa automaticamente.
 
 Nesses, segure o pino de boot em nível baixo e dê o reset manualmente.
+
+## 6. É uma ESP32-CAM sem a base de gravação
+
+A ESP32-CAM não tem USB. Sem a base ESP32-CAM-MB, ela precisa de um adaptador
+USB-serial, e o **IO0 ligado ao GND** durante o reset para entrar em modo de
+gravação. Veja [Gravar e ativar a ESP32-CAM](/hardware/gravar-a-esp32-cam/).
+
+## Caso especial: "Wrong boot mode"
+
+A mensagem `Wrong boot mode detected (0x17)` quer dizer que a placa reiniciou,
+mas rodando a firmware em vez de entrar em modo de gravação. O gravador já
+tenta de novo com um reset mais longo. Se ainda assim falhar, **segure o botão
+BOOT** (IO0, na ESP32-CAM) e solte só quando a barra de progresso andar.
+
+## Caso especial: ESP32-CAM que grava mas não responde
+
+Com a CAM na base ESP32-CAM-MB, a gravação termina e logo depois aparece "a
+placa não respondeu à chave de ativação" — ou um monitor serial fica em branco e
+o botão RST não faz nada. A porta foi achada; o que acontece é que a base segura
+a placa em reset. A solução está em [Gravar e ativar a
+ESP32-CAM](/hardware/gravar-a-esp32-cam/#a-placa-não-respondeu-à-chave-de-ativação).
 
 ## Caso especial: ESP8266 que entra em modo de gravação sozinha
 
